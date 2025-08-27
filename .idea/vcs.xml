@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/github-actions-reusable" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/learn-ansible" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/learn-github-actions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/learn-kubernetes" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/learn-shell" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/learn-terraform" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-ansible" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-cart" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-catalogue" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-dispatch" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-helm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-payment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-shell" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-shipping" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-terraform" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/roboshop-user" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/AllRaghu'sCode/tools-setup-code" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DevSecOpsCourse - 2/learn-github-action4" vcs="Git" />
+  </component>
+</project>

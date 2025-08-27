@@ -6,7 +6,7 @@ curl -o actions-runner-linux-x64-2.328.0.tar.gz -L https://github.com/actions/ru
 
 tar xzf ./actions-runner-linux-x64-2.328.0.tar.gz
 
-./config.sh --url https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs --token ./config.cmd --url https://github.com/aminrana37 --token AHRVVYVFJWWJHOMUW2USLFTIV22RO
+./config.sh --url https://github.com/aminrana37 --token AHRVVYVFJWWJHOMUW2USLFTIV22RO
 
 ./run.sh
 

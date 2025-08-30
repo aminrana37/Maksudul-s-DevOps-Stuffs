@@ -15,7 +15,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash frontend.sh
+      - run: sudo bash frontend.sh
 
   mongodb:
     runs-on: self-hosted
@@ -29,7 +29,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash mongodb.sh
+      - run: sudo bash mongodb.sh
 
   catalogue:
     runs-on: self-hosted
@@ -43,7 +43,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash catalogue.sh
+      - run: sudo bash catalogue.sh
 
   redis:
     runs-on: self-hosted
@@ -57,7 +57,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash redis.sh
+      - run: sudo bash redis.sh
 
   user:
     runs-on: self-hosted
@@ -71,7 +71,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash user.sh
+      - run: sudo bash user.sh
 
   cart:
     runs-on: self-hosted
@@ -85,7 +85,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash cart.sh
+      - run: sudo bash cart.sh
 
   mysql:
     runs-on: self-hosted
@@ -99,7 +99,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash mysql.sh
+      - run: sudo bash mysql.sh
 
   shipping:
     runs-on: self-hosted
@@ -113,7 +113,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash shipping.sh
+      - run: sudo bash shipping.sh
 
   rabbitmq:
     runs-on: self-hosted
@@ -127,7 +127,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash rabbitmq.sh
+      - run: sudo bash rabbitmq.sh
 
   payment:
     runs-on: self-hosted
@@ -141,7 +141,7 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash payment.sh
+      - run: sudo bash payment.sh
 
   dispatch:
     runs-on: self-hosted
@@ -155,6 +155,6 @@ jobs:
 
       - name: Running fronend script
         run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-             sudo bash dispatch.sh
+      - run: sudo bash dispatch.sh
 
 

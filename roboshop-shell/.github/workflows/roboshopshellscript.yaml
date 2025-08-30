@@ -1,0 +1,158 @@
+name: Run Roboshop shell script
+on: workflow_dispatch
+jobs:
+  frontend:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: ssh into frontend
+      - run: ssh ec2-user@23.22.179.88
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash frontend.sh
+
+  mongodb:
+    runs-on: self-hosted
+    needs: [frontend]
+    steps:
+      - name: ssh into mongodb
+      - run: ssh ec2-user@54.87.159.136
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash mongodb.sh
+
+  catalogue:
+    runs-on: self-hosted
+    needs: [ mongodb ]
+    steps:
+      - name: ssh into catalogue
+      - run: ssh ec2-user@3.80.65.177
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash catalogue.sh
+
+  redis:
+    runs-on: self-hosted
+    needs: [ catalogue ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@54.224.219.215
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash redis.sh
+
+  user:
+    runs-on: self-hosted
+    needs: [ redis ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@54.85.149.180
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash user.sh
+
+  cart:
+    runs-on: self-hosted
+    needs: [ user ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@54.234.142.166
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash cart.sh
+
+  mysql:
+    runs-on: self-hosted
+    needs: [ cart ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@3.91.21.137
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash mysql.sh
+
+  shipping:
+    runs-on: self-hosted
+    needs: [ mysql ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@54.242.188.209
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash shipping.sh
+
+  rabbitmq:
+    runs-on: self-hosted
+    needs: [ shipping ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@54.172.48.95
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash rabbitmq.sh
+
+  payment:
+    runs-on: self-hosted
+    needs: [ rabbitmq ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@23.22.186.65
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash payment.sh
+
+  dispatch:
+    runs-on: self-hosted
+    needs: [ payment ]
+    steps:
+      - name: ssh into redis
+      - run: ssh ec2-user@204.236.202.58
+
+      - name: Cloning git repository
+      - run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+
+      - name: Running fronend script
+      - run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+      - run: sudo bash dispatch.sh

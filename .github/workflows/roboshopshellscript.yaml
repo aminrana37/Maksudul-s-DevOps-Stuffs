@@ -1,160 +1,435 @@
 name: Run Roboshop shell script
 on: workflow_dispatch
+#jobs:
+#  frontend:
+#    runs-on: self-hosted
+#    steps:
+#      - name: Checkout repository code
+#        uses: actions/checkout@v4
+#
+#      - name: ssh into frontend
+#        run: ssh ec2-user@23.22.179.88
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash frontend.sh
 jobs:
   frontend:
     runs-on: self-hosted
     steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v4
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "23.22.179.88" > /tmp/host
 
-      - name: ssh into frontend
-        run: ssh ec2-user@23.22.179.88
+      - name: Run frontend remotely
+        env: { HOST: 23.22.179.88 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash frontend.sh
+          "'
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash frontend.sh
+#  mongodb:
+#    runs-on: self-hosted
+#    needs: [frontend]
+#    steps:
+#      - name: ssh into mongodb
+#        run: ssh ec2-user@54.87.159.136
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash mongodb.sh
 
   mongodb:
     runs-on: self-hosted
     needs: [frontend]
     steps:
-      - name: ssh into mongodb
-        run: ssh ec2-user@54.87.159.136
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "54.87.159.136" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 54.87.159.136 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash mongodb.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash mongodb.sh
+#  catalogue:
+#    runs-on: self-hosted
+#    needs: [ mongodb ]
+#    steps:
+#      - name: ssh into catalogue
+#        run: ssh ec2-user@3.80.65.177
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash catalogue.sh
 
   catalogue:
     runs-on: self-hosted
     needs: [ mongodb ]
     steps:
-      - name: ssh into catalogue
-        run: ssh ec2-user@3.80.65.177
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "3.80.65.177" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 3.80.65.177 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash catalogue.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash catalogue.sh
+#  redis:
+#    runs-on: self-hosted
+#    needs: [ catalogue ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@54.224.219.215
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash redis.sh
 
   redis:
     runs-on: self-hosted
     needs: [ catalogue ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@54.224.219.215
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "54.224.219.215" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 54.224.219.215 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash redis.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash redis.sh
+#  user:
+#    runs-on: self-hosted
+#    needs: [ redis ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@54.85.149.180
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash user.sh
 
   user:
     runs-on: self-hosted
     needs: [ redis ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@54.85.149.180
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "54.85.149.180" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 54.85.149.180 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash user.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash user.sh
+#  cart:
+#    runs-on: self-hosted
+#    needs: [ user ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@54.234.142.166
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash cart.sh
 
   cart:
     runs-on: self-hosted
     needs: [ user ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@54.234.142.166
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "54.234.142.166" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 54.234.142.166 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash cart.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash cart.sh
+#  mysql:
+#    runs-on: self-hosted
+#    needs: [ cart ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@3.91.21.137
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash mysql.sh
 
   mysql:
     runs-on: self-hosted
     needs: [ cart ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@3.91.21.137
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "3.91.21.137" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 3.91.21.137 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash mysql.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash mysql.sh
+#  shipping:
+#    runs-on: self-hosted
+#    needs: [ mysql ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@54.242.188.209
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash shipping.sh
 
   shipping:
     runs-on: self-hosted
     needs: [ mysql ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@54.242.188.209
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "54.242.188.209" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 54.242.188.209 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash shipping.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash shipping.sh
+#  rabbitmq:
+#    runs-on: self-hosted
+#    needs: [ shipping ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@54.172.48.95
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash rabbitmq.sh
 
   rabbitmq:
     runs-on: self-hosted
     needs: [ shipping ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@54.172.48.95
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "54.172.48.95" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 54.172.48.95 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash rabbitmq.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash rabbitmq.sh
+#  payment:
+#    runs-on: self-hosted
+#    needs: [ rabbitmq ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@23.22.186.65
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash payment.sh
 
   payment:
     runs-on: self-hosted
     needs: [ rabbitmq ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@23.22.186.65
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "23.22.186.65" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+      - name: Run frontend remotely
+        env: { HOST: 23.22.186.65 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash payment.sh
+          "'
 
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash payment.sh
+#  dispatch:
+#    runs-on: self-hosted
+#    needs: [ payment ]
+#    steps:
+#      - name: ssh into redis
+#        run: ssh ec2-user@204.236.202.58
+#
+#      - name: Cloning git repository
+#        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+#
+#      - name: Running fronend script
+#        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
+#      - run: sudo bash dispatch.sh
 
   dispatch:
     runs-on: self-hosted
     needs: [ payment ]
     steps:
-      - name: ssh into redis
-        run: ssh ec2-user@204.236.202.58
+      - name: Add SSH key
+        run: |
+          install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
+          printf "%s\n" "204.236.202.58" > /tmp/host
 
-      - name: Cloning git repository
-        run: git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
-
-      - name: Running fronend script
-        run: cd Maksudul-s-DevOps-Stuffs/roboshop-shell/
-      - run: sudo bash dispatch.sh
+      - name: Run frontend remotely
+        env: { HOST: 204.236.202.58 }
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
+            set -e
+            if [ -d Maksudul-s-DevOps-Stuffs ]; then
+              cd Maksudul-s-DevOps-Stuffs && git pull --rebase
+            else
+              git clone https://github.com/aminrana37/Maksudul-s-DevOps-Stuffs.git
+              cd Maksudul-s-DevOps-Stuffs
+            fi
+            cd roboshop-shell
+            ls -la                # optional
+            sudo bash dispatch.sh
+          "'  
 
 

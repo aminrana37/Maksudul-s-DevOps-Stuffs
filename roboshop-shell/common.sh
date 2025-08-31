@@ -43,7 +43,7 @@ configure_conponent_others() {
 }
 
 daemon_reload_and_restart_component() {
-  cp $pwd/$component.service /etc/systemd/system/$component.service
+  cp /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-shell/$component.service /etc/systemd/system/$component.service
   systemctl daemon-reload
   enable_and_restart_component
 }

@@ -7,6 +7,11 @@ enable_and_restart_service() {
   restart_component
 }
 
+enable_and_restart_component() {
+  systemctl enable $component
+  systemctl restart $component
+}
+
 service_setup() {
   dnf module disable $service -y
   dnf module enable $service:$version -y

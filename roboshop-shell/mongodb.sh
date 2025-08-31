@@ -12,7 +12,7 @@ print_task Installing and starting mongodb
 install_enable_restart_mongodb
 
 print_task Updating listen address
-sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/$component.conf
+sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/mongod.conf
 
 print_task Restarting mongodb
 restart_component

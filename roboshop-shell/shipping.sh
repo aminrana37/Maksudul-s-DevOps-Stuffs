@@ -1,6 +1,6 @@
 source common.sh
 component=shipping
-service=shiping
+service=shipping
 
 print_task Installing maven
 dnf install maven -y

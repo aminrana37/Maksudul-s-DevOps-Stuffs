@@ -7,10 +7,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "23.22.179.88" > /tmp/host
+          printf "%s\n" "frontend.maksuduldevsecops.online" > /tmp/host
 
       - name: Run frontend remotely
-        env: { HOST: 23.22.179.88 }
+        env: { HOST: frontend.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -32,10 +32,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "54.87.159.136" > /tmp/host
+          printf "%s\n" "mongodb.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 54.87.159.136 }
+      - name: Run mongodb remotely
+        env: { HOST: mongodb.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -57,10 +57,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "3.80.65.177" > /tmp/host
+          printf "%s\n" "catalogue.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 3.80.65.177 }
+      - name: Run catalogue remotely
+        env: { HOST: catalogue.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -82,10 +82,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "54.224.219.215" > /tmp/host
+          printf "%s\n" "redis.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 54.224.219.215 }
+      - name: Run redis remotely
+        env: { HOST: redis.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -107,10 +107,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "54.85.149.180" > /tmp/host
+          printf "%s\n" "user.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 54.85.149.180 }
+      - name: Run user remotely
+        env: { HOST: user.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -132,10 +132,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "54.234.142.166" > /tmp/host
+          printf "%s\n" "cart.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 54.234.142.166 }
+      - name: Run cart remotely
+        env: { HOST: cart.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -157,10 +157,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "3.91.21.137" > /tmp/host
+          printf "%s\n" "mysql.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 3.91.21.137 }
+      - name: Run mysql remotely
+        env: { HOST: mysql.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -182,10 +182,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "54.242.188.209" > /tmp/host
+          printf "%s\n" "shipping.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 54.242.188.209 }
+      - name: Run shipping remotely
+        env: { HOST: shipping.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -207,10 +207,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "54.172.48.95" > /tmp/host
+          printf "%s\n" "rabbitmq.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 54.172.48.95 }
+      - name: Run rabbitmq remotely
+        env: { HOST: rabbitmq.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -232,10 +232,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "23.22.186.65" > /tmp/host
+          printf "%s\n" "payment.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 23.22.186.65 }
+      - name: Run payment remotely
+        env: { HOST: payment.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e
@@ -257,10 +257,10 @@ jobs:
       - name: Add SSH key
         run: |
           install -m 600 /dev/stdin ~/.ssh/id_rsa <<< "${{ secrets.SSH_KEY }}"
-          printf "%s\n" "204.236.202.58" > /tmp/host
+          printf "%s\n" "dispatch.maksuduldevsecops.online" > /tmp/host
 
-      - name: Run frontend remotely
-        env: { HOST: 204.236.202.58 }
+      - name: Run dispatch remotely
+        env: { HOST: dispatch.maksuduldevsecops.online }
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@$HOST 'bash -lc "
             set -e

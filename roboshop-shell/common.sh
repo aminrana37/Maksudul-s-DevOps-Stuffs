@@ -142,7 +142,7 @@ configure_frontend_content() {
 
 
 copy_repo_file() {
-  cp $componentrepo.repo /etc/yum.repos.d/$componentrepo.repo
+  cp /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-shell/$componentrepo.repo /etc/yum.repos.d/$componentrepo.repo
 }
 
 copy_service() {

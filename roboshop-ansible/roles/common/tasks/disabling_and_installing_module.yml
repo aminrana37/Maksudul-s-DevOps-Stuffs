@@ -1,0 +1,3 @@
+- name: Disabling previous version, enabling new version and installing new version of {{ tool }}
+  ansible.builtin.shell: dnf module disable {{ tool }} -y; dnf module enable {{ tool }}:{{version }} -y; dnf install {{ tool }} -y
+

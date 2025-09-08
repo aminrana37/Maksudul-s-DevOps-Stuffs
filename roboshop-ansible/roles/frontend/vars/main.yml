@@ -1,0 +1,3 @@
+#component: frontend
+tool: nginx
+version: 1.24

@@ -1,0 +1,12 @@
+[Unit]
+Description = {{ component | title }} Service
+[Service]
+User={{ service_username }}
+Environment=MONGO=true
+Environment=REDIS_URL='redis://redis.maksuduldevsecops.online:6379'
+Environment=MONGO_URL="mongodb://http://mongodb.maksuduldevsecops.online:27017/{{ component }}"
+ExecStart={{ service_start_command }}
+SyslogIdentifier={{ component }}
+
+[Install]
+WantedBy=multi-user.target

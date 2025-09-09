@@ -1,6 +1,7 @@
 - name: Install Nginx
-  ansible.builtin.include_tasks:
-    file: disabling_and_installing_module.yml
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: disabling_and_installing_module.yml
 
 - name: Copy nginx config file
   ansible.builtin.template:
@@ -24,5 +25,6 @@
     remote_src: yes
 
 - name: Enable and Restart Nginx
-  ansible.builtin.include_tasks:
-    file: enable_and_restart_service.yml
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: enable_and_restart_service.yml

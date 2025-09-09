@@ -1,0 +1,21 @@
+- name: Installing Redis
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: disabling_and_installing_module.yml
+
+- name: Updating redis config file listen address
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Updating Redis config file protected mode
+  ansible.builtin.replace:
+    path: /etc/redis/redis.conf
+    regexp: 'protected-mode yes'
+    replace: 'protected-mode no'
+
+- name: Enabling and restarting redis
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: enable_and_restart_service.yml

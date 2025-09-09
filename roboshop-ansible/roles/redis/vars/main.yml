@@ -1,0 +1,5 @@
+#component: redis
+service: redis
+version: 7
+#service_username: roboshop
+#service_start_command: "/bin/node /app/server.js"

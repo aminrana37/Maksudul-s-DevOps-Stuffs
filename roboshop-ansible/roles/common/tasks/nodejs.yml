@@ -1,0 +1,16 @@
+- name: Installing nodejs
+  ansible.builtin.include_tasks:
+    file: disabling_and_installing_module.yml
+
+- name: Configuring nodejs
+  ansible.builtin.include_tasks:
+    file: artifact_download.yml
+
+- name: Install NodeJs Dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: Include systemd_setup
+  ansible.builtin.include_tasks:
+    file: systemd_setup.yml

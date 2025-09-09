@@ -1,0 +1,7 @@
+- name: Installing {{ service }}
+  ansible.builtin.shell: dnf install {{ service }} -y
+
+- name: Enable and Restart {{ service }}
+  ansible.builtin.include_tasks:
+    file: enable_and_restart_service.yml
+

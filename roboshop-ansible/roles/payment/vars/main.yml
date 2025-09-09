@@ -1,0 +1,2 @@
+service_username: root
+service_start_command: "/usr/local/bin/uwsgi --ini payment.ini"

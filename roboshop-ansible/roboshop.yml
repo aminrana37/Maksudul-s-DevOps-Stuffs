@@ -1,5 +1,5 @@
 - name: Frontend Setup
-  hosts: {{ component }}.maksuduldevsecops.online
+  hosts: "{{ component }}".maksuduldevsecops.online
   become: true
   roles:
-    - {{ component }}
+    - "{{ component }}"

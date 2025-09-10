@@ -5,36 +5,32 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Run ansible script for frontend
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make frontend component=frontend
+        run: make frontend component=frontend
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   redis:
     runs-on: self-hosted
     needs: [ frontend ]
     steps:
       - name: Running ansible script for redis
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make redis component=redis
+        run: make redis component=redis
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   mongodb:
     runs-on: self-hosted
     needs: [ redis ]
     steps:
       - name: Running ansible script for mongodb
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make mongodb component=mongodb
+        run: make mongodb component=mongodb
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   mysql:
     runs-on: self-hosted
     needs: [ mongodb ]
     steps:
       - name: Running ansible script for mysql
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make mysql component=mysql
+        run: make mysql component=mysql
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   rabbitmq:
     runs-on: self-hosted
@@ -51,9 +47,8 @@ jobs:
     needs: [ rabbitmq ]
     steps:
       - name: Running ansible script for catalogue
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make catalogue component=catalogue
+        run: make catalogue component=catalogue
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   user:
@@ -61,9 +56,8 @@ jobs:
     needs: [ catalogue ]
     steps:
       - name: Running script for user
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make user component=user
+        run: make user component=user
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   cart:
@@ -71,9 +65,8 @@ jobs:
     needs: [ user ]
     steps:
       - name: Running ansible script for cart
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make cart component=cart
+        run: make cart component=cart
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   shipping:
@@ -81,9 +74,8 @@ jobs:
     needs: [ cart ]
     steps:
       - name: Running ansible script for shipping
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make shipping component=shipping
+        run: make shipping component=shipping
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   payment:
@@ -91,9 +83,8 @@ jobs:
     needs: [ shipping ]
     steps:
       - name: Running ansible script for payment
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make payment component=payment
+        run: make payment component=payment
+        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
 

@@ -3,8 +3,10 @@ default:
 	ansible-playbook -i $(component).maksuduldevsecops.online, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component=$(component)
 
 frontend:
+	git pull
 	ansible-playbook -i frontend.maksuduldevsecops.online, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component=frontend
 redis:
+	git pull
 	ansible-playbook -i redis.maksuduldevsecops.online, -e ansible_user=ec2-user -e ansible_password=DevOps321 roboshop.yml -e component=redis
 mongodb:
 	git pull

@@ -1,4 +1,4 @@
 - name: Copying {{ service }} repo file
   ansible.builtin.copy:
-    src: {{ service }}
+    src: "{{ service }}"
     dest: /etc/yum.repos.d/{{ service }}.repo

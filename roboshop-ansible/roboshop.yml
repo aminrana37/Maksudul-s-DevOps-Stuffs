@@ -1,4 +1,4 @@
-- name: Frontend Setup
+- name: "{{ component }}" Setup
   hosts: "{{ component }}".maksuduldevsecops.online
   become: true
   roles:

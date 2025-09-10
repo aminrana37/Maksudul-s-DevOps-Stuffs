@@ -1,0 +1,99 @@
+name: Run Roboshop ansible playbooks
+on: workflow_dispatch
+jobs:
+  frontend:
+    runs-on: self-hosted
+    steps:
+      - name: Run ansible script for frontend
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make frontend component=frontend
+          "'
+  redis:
+    runs-on: self-hosted
+    needs: [ frontend ]
+    steps:
+      - name: Running ansible script for redis
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make redis component=redis
+          "'
+  mongodb:
+    runs-on: self-hosted
+    needs: [ redis ]
+    steps:
+      - name: Running ansible script for mongodb
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make mongodb component=mongodb
+          "'
+  mysql:
+    runs-on: self-hosted
+    needs: [ mongodb ]
+    steps:
+      - name: Running ansible script for mysql
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make mysql component=mysql
+          "'
+  rabbitmq:
+    runs-on: self-hosted
+    needs: [ mysql ]
+    steps:
+      - name: Running ansible script for rabbitmq
+        run:
+            cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+              make rabbitmq component=rabbitmq
+              "'
+
+  catalogue:
+    runs-on: self-hosted
+    needs: [ rabbitmq ]
+    steps:
+      - name: Running ansible script for catalogue
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make catalogue component=catalogue
+          "'
+
+  user:
+    runs-on: self-hosted
+    needs: [ catalogue ]
+    steps:
+      - name: Running script for user
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make user component=user
+          "'
+
+  cart:
+    runs-on: self-hosted
+    needs: [ user ]
+    steps:
+      - name: Running ansible script for cart
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make cart component=cart
+          "'
+
+  shipping:
+    runs-on: self-hosted
+    needs: [ cart ]
+    steps:
+      - name: Running ansible script for shipping
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make shipping component=shipping
+          "'
+
+  payment:
+    runs-on: self-hosted
+    needs: [ shipping ]
+    steps:
+      - name: Running ansible script for payment
+        run:
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make payment component=payment
+          "'
+
+

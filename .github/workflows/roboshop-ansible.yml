@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Run ansible script for frontend
         run: make frontend component=frontend
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   redis:
     runs-on: self-hosted
@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Running ansible script for redis
         run: make redis component=redis
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   mongodb:
     runs-on: self-hosted
@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Running ansible script for mongodb
         run: make mongodb component=mongodb
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   mysql:
     runs-on: self-hosted
@@ -30,16 +30,15 @@ jobs:
     steps:
       - name: Running ansible script for mysql
         run: make mysql component=mysql
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
   rabbitmq:
     runs-on: self-hosted
     needs: [ mysql ]
     steps:
       - name: Running ansible script for rabbitmq
-        run:
-          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-          make rabbitmq component=rabbitmq
+        run: make rabbitmq component=rabbitmq
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   catalogue:
@@ -48,7 +47,7 @@ jobs:
     steps:
       - name: Running ansible script for catalogue
         run: make catalogue component=catalogue
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   user:
@@ -57,7 +56,7 @@ jobs:
     steps:
       - name: Running script for user
         run: make user component=user
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   cart:
@@ -66,7 +65,7 @@ jobs:
     steps:
       - name: Running ansible script for cart
         run: make cart component=cart
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   shipping:
@@ -75,7 +74,7 @@ jobs:
     steps:
       - name: Running ansible script for shipping
         run: make shipping component=shipping
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
   payment:
@@ -84,7 +83,7 @@ jobs:
     steps:
       - name: Running ansible script for payment
         run: make payment component=payment
-        working-directory: Maksudul-s-DevOps-Stuffs/roboshop-ansible
+        working-directory: /home/ec2-user/Maksudul-s-DevOps-Stuffs/roboshop-ansible
 
 
 

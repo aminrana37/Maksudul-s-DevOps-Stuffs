@@ -8,7 +8,7 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make frontend component=frontend
-          "'
+
   redis:
     runs-on: self-hosted
     needs: [ frontend ]
@@ -17,7 +17,7 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make redis component=redis
-          "'
+
   mongodb:
     runs-on: self-hosted
     needs: [ redis ]
@@ -26,7 +26,7 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make mongodb component=mongodb
-          "'
+
   mysql:
     runs-on: self-hosted
     needs: [ mongodb ]
@@ -35,16 +35,16 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make mysql component=mysql
-          "'
+
   rabbitmq:
     runs-on: self-hosted
     needs: [ mysql ]
     steps:
       - name: Running ansible script for rabbitmq
         run:
-            cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
-              make rabbitmq component=rabbitmq
-              "'
+          cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
+          make rabbitmq component=rabbitmq
+
 
   catalogue:
     runs-on: self-hosted
@@ -54,7 +54,7 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make catalogue component=catalogue
-          "'
+
 
   user:
     runs-on: self-hosted
@@ -64,7 +64,7 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make user component=user
-          "'
+
 
   cart:
     runs-on: self-hosted
@@ -74,7 +74,7 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make cart component=cart
-          "'
+
 
   shipping:
     runs-on: self-hosted
@@ -84,7 +84,7 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make shipping component=shipping
-          "'
+
 
   payment:
     runs-on: self-hosted
@@ -94,6 +94,6 @@ jobs:
         run:
           cd Maksudul-s-DevOps-Stuffs/roboshop-ansible
           make payment component=payment
-          "'
+
 
 
